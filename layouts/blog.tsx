@@ -4,6 +4,7 @@ import { parseISO, format } from 'date-fns';
 
 import type { PropsWithChildren } from 'react';
 import type { Blog } from '.contentlayer/types';
+import Container from '../components/Container';
 
 
 export default function BlogLayout({
@@ -11,7 +12,12 @@ export default function BlogLayout({
   post
 }: PropsWithChildren<{ post: Blog }>) {
   return (
-
+    <Container
+      title={`${post.title} – Thomas Maximini`}
+      description={post.summary}
+      image={`https://maxi.io${post.image}`}
+      date={new Date(post.publishedAt).toISOString()}
+      type="article">
       <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto mb-16">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {post.title}
@@ -40,5 +46,7 @@ export default function BlogLayout({
 
 
       </article>
+    </Container>
+
   );
 }
