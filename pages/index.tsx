@@ -39,14 +39,6 @@ export default function Home() {
             title="Serverless GraphQL on AWS Lambda"
             slug="serverless-graphql"
           />
-          <BlogPostCard
-            title="Rust Is The Future of JavaScript Infrastructure"
-            slug="rust"
-          />
-          <BlogPostCard
-            title="Past, Present, and Future of React State Management"
-            slug="react-state-management"
-          />
         </div>
       </div>
     </Container>

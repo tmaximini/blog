@@ -31,7 +31,7 @@ export default function BlogLayout({
               src="/avatar.png"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-700">
+            <p className="ml-2 text-sm text-gray-700 dark:text-gray-200">
               {'Thomas Maximini / '}
               {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}
             </p>
