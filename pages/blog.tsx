@@ -19,7 +19,7 @@ export default function Blog({
       title="Blog – Thomas Maximini"
       description="My personal ramblings"
     >
-      <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mb-16">
+      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16">
 
         {!filteredBlogPosts.length && (
           <p className="mb-4 text-gray-600 dark:text-gray-400">

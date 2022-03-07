@@ -23,7 +23,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Helvetica', ...fontFamily.sans]
+        sans: ['system-ui', ...fontFamily.sans]
       },
       typography: (theme) => ({
         DEFAULT: {
