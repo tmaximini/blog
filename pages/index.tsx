@@ -19,26 +19,28 @@ export default function Home() {
             </h1>
             
             <p className="text-gray-600 dark:text-white mb-16 text-lg font-bold">
-            Software Engineer at <a href="https://crowdcast.io">Crowdcast</a>. Based in Limburg, Germany.
+            Software Engineer at <a href="https://crowdcast.io">Crowdcast</a>. Based in Limburg, Germany. <br />
             </p>
 
           </div>
-          <div className="w-[80px] md:w-[120px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[80px] md:w-[200px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Thomas Maximini"
-              height={200}
-              width={200  }
-              src="/avatar.png"
-              className="rounded-full filter grayscale"
+              height={400}
+              width={400}
+              src="/tom_berlin.png"
+              className="rounded-full"
             />
           </div>
         </div>
         <div className="flex flex-col sm:flex-row items-start">
           <Link href='/blog'>
-          <a >Blog</a>
+          <a title="Blog" className="mr-4">Blog</a>
           </Link>
-          <a href='https://twitter.com/tmaximini'>Twitter</a>
-          <a href='https://github.com/tmaximini'>Github</a>
+          <a target="_blank" title="Github" className="mr-4" href='https://github.com/tmaximini' rel="noreferrer">Github</a>
+          <a target="_blank" title="Twitter" className="mr-4" href='https://twitter.com/tmaximini' rel="noreferrer">Twitter</a>
+          <a target="_blank" title="Instagram" className="mr-4" href='https://instagram.com/mxmn82' rel="noreferrer">Instagram</a>
+          <a target="_blank" title="Soundcloud" className="mr-4" href='https://soundcloud.com/maximini' rel="noreferrer">Soundcloud</a>
       </div>
       </div>
     </Container>
