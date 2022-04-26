@@ -22,7 +22,7 @@
 
 .prose .anchor:after {
   @apply text-gray-300 dark:text-gray-700;
-  content: "#";
+  content: '#';
 }
 
 .prose *:hover > .anchor {
@@ -74,6 +74,16 @@
   @apply text-green-500;
 }
 
+.light .token.property,
+.light .token.tag,
+.light .token.boolean,
+.light .token.number,
+.light .token.constant,
+.light .token.symbol,
+.light .token.deleted {
+  @apply text-green-700;
+}
+
 .token.selector,
 .token.attr-name,
 .token.string,
@@ -81,6 +91,18 @@
 .token.builtin,
 .token.inserted {
   @apply text-blue-300;
+}
+
+.light .token.selector,
+.light .token.attr-name,
+.light .token.builtin,
+.light .token.inserted {
+  @apply text-blue-600;
+}
+
+.light .token.string,
+.light .token.char {
+  @apply text-yellow-800;
 }
 
 .token.operator,
@@ -91,10 +113,24 @@
   @apply text-yellow-500;
 }
 
+.light .token.operator,
+.light .token.entity,
+.light .token.url,
+.light .language-css .token.string,
+.light .style .token.string {
+  @apply text-yellow-600;
+}
+
 .token.atrule,
 .token.attr-value,
 .token.keyword {
   @apply text-blue-300;
+}
+
+.light .token.atrule,
+.light .token.attr-value,
+.light .token.keyword {
+  @apply text-blue-600;
 }
 
 .token.function,
@@ -106,14 +142,18 @@
   @apply text-gray-500;
 }
 
+.light .token.comment {
+  @apply text-gray-400;
+}
+
 .token.regex,
 .token.important,
 .token.variable {
   @apply text-yellow-500;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   @apply text-gray-800 dark:text-gray-50;
 }
 
@@ -146,8 +186,8 @@ pre {
 }
 
 /* Remove Safari input shadow on mobile */
-input[type="text"],
-input[type="email"] {
+input[type='text'],
+input[type='email'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
