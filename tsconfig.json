@@ -18,6 +18,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
       "contentlayer/generated": [
         "./.contentlayer/generated"
@@ -29,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".contentlayer/generated",
-    ".contentlayer/types"
+    ".contentlayer/types/index.d.ts"
   ],
   "exclude": [
     "node_modules"
