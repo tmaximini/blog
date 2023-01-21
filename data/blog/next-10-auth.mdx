@@ -1,11 +1,11 @@
 ---
-path: "/blog/next-js-auth"
-title: "Authentication in Next.js apps"
-summary: "Concepts for isomorphic authentication"
+path: '/blog/next-js-auth'
+title: 'Authentication in Next.js apps'
+summary: 'Concepts for isomorphic authentication'
 published: true
-image: ""
-publishedAt: "2020-11-21"
-keywords: "Next.js"
+image: ''
+publishedAt: '2020-11-21'
+keywords: 'Next.js'
 tags:
   - next.js
 ---
@@ -56,8 +56,8 @@ The logic of that function depends on your use case. In my example it it is fair
 ```ts
 export const getServerSideProps = ({ req, res }) => {
   try {
-    const user = req.session.get("user");
-    if (!user) throw new Error("unauthorized");
+    const user = req.session.get('user');
+    if (!user) throw new Error('unauthorized');
 
     return {
       props: {
@@ -68,7 +68,7 @@ export const getServerSideProps = ({ req, res }) => {
     return {
       redirect: {
         permanent: false,
-        destination: "/login",
+        destination: '/login',
       },
     };
   }
@@ -85,7 +85,7 @@ One neat little refactoring trick is that we can create a shared helper somewher
  */
 export const getUserFromServerSession = (redirectTo?: string) =>
   withSSRSession(async ({ req }: GetServerSidePropsContextWithSession) => {
-    const user = req.session.get<StringifiedSession>("user");
+    const user = req.session.get<StringifiedSession>('user');
 
     // @todo: validate session TTL
 
@@ -93,9 +93,7 @@ export const getUserFromServerSession = (redirectTo?: string) =>
       return {
         redirect: {
           permanent: false,
-          destination: `/sign-in${
-            redirectTo ? `?redirectTo=${redirectTo}` : ""
-          }`,
+          destination: `/sign-in${redirectTo ? `?redirectTo=${redirectTo}` : ''}`,
         },
       };
     }
@@ -143,8 +141,8 @@ First, create a context:
 
 ```ts
 // AuthContext.tsx
-import React from "react";
-import { Session } from "~/types";
+import React from 'react';
+import { Session } from '~/types';
 
 const AuthContext = React.createContext<{
   user: Session | undefined;
@@ -167,8 +165,8 @@ The provider usually gets added to the `_app` in Next.js apps (Usually you end u
 
 ```tsx
 // pages/_app.tsx
-import { AppProps } from "next/app";
-import { AuthProvider } from "~/components/auth/AuthProvider";
+import { AppProps } from 'next/app';
+import { AuthProvider } from '~/components/auth/AuthProvider';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -188,13 +186,13 @@ The actual Provider could be implemented like this:
 
 ```tsx
 // AuthProvider.tsx
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import { auth } from "~/services/auth";
-import { Session } from "~/types";
+import { auth } from '~/services/auth';
+import { Session } from '~/types';
 
-import AuthContext from "./AuthContext";
+import AuthContext from './AuthContext';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { push } = useRouter();
@@ -204,22 +202,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const usr = await auth.login(username, password);
     if (usr) {
       setUser(usr);
-      push("/dashboard");
+      push('/dashboard');
     } else {
-      console.warn("Invalid username or password"); // handle error
+      console.warn('Invalid username or password'); // handle error
     }
   };
 
   const logout = async () => {
     await auth.logout();
-    push("/");
+    push('/');
   };
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
 }
 ```
 
@@ -229,8 +223,8 @@ The actual hook itself now is super simple - it just returns the value from the 
 
 ```ts
 // hooks/useAuth.ts
-import { useContext } from "react";
-import AuthContext from "~/components/auth/AuthContext";
+import { useContext } from 'react';
+import AuthContext from '~/components/auth/AuthContext';
 
 export const useAuth = () => useContext(AuthContext);
 ```
@@ -238,14 +232,14 @@ export const useAuth = () => useContext(AuthContext);
 Now whereever we want to access the user, we can just do
 
 ```tsx
-import { useAuth } from "~/hook/useAuth";
+import { useAuth } from '~/hook/useAuth';
 
 const { user } = useAuth();
 ```
 
-Here are some other blog posts that were helping me on the way:
+Here are some articles that were helping me on the way:
 
-- https://leerob.io/blog/nextjs-authentication
+- https://nextjs.org/docs/authentication
 - https://colinhacks.com/essays/nextjs-firebase-authentication
 
 I hope that was useful! Enjoy your Next.js project!

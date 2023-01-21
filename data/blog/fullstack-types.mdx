@@ -1,0 +1,133 @@
+---
+path: '/blog/next-js-auth'
+title: 'Fullstack types with Postgres, GraphQL and Typescript'
+summary: 'How using types helped us to accelerate developer productivity'
+published: true
+image: ''
+publishedAt: '2023-01-07'
+keywords: ['Typescript', 'Postgres', 'Hasura', 'GraphQL']
+tags:
+  - Typescript
+  - GraphQL
+  - Hasura
+  - Postgres
+---
+
+## Some background
+
+I started working at Crowdcast in March 2020, just a week before the first Covid lockdown started in Germany. Crowdcast is an online platform for running live video events and building a community around it. The lockdowns led to a sudden spike in demand for live video events, so Crowdcast saw loads of new signups and a significant increase in traffic.
+
+The stack Crowdcast was ran on was a client side application written in Angular 1.x. and a monolithic API written in Node.js (express), both hosted on Heroku.
+
+During that time there were two main data stores: firebase realtime database and a MongoDB cluster. Both of those data stores are document-based and they were completely encapsulated from each other, so there was no relational integrity and they had to be kept in sync using background jobs.
+
+Especially the firebase realtime database proved itself as a bottleneck: Too often we found ourselves in a situation where it showed 100% load and became unresponsive, meaning that any requests relying on it could not be served anymore. And it could not be scaled up any further, their “pay-as-you-go” plan was the only option they offered.
+
+We’ve already spend a serious amount of time trying to mitigate the issue by using caching but the core problem remained: Firebase would eventually reach 100% capacity and block any new requests for a couple of minutes.
+
+From a business perspective this was a nightmare for us. Running an online live event platform we needed to ensure full availability around the clock. If we had one high-scale event (more than 10k live users was usually considered our danger zone), this could bring down the entire platform for a couple of minutes and thus affect all live events that were running during that time period.
+
+So we decided we had to rewrite the entire application from scratch using a more modern technology stack that would meet our requirements and serve us well in the future.
+
+## The requirements
+
+When we decided to write Crowdcast from scratch, we were facing the question of what technology stack to use. As the lead architect during this time, it was my job to come up with a proposal that would best fit our requirements.
+
+Those requirements were:
+
+- Compatibility with v1 data sources, since we needed interoperability between the two versions, even though they run on completely different technologies
+- Scalability of the API and database beyond the limits we were experiencing within the original Crowdcast platform
+- Developer velocity - quick adaption of the new stack and increased productivity
+- Performance improvements
+- Flexibility and future proof for the next 10 or so years
+
+## Choosing the stack
+
+### Typescript
+
+I remember when Typescript started to take off around 2018 and I felt a little intimidated by it, even though I was writing Javascript already for 10 years. There was just something about the look of those complex types and compiler errors that threw me off.
+
+```tsx
+type FunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? K : never;
+}[keyof T];
+type FunctionProperties<T> = Pick<T, FunctionPropertyNames<T>>;
+
+type NonFunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? never : K;
+}[keyof T];
+type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>;
+
+interface Part {
+  id: number;
+  name: string;
+  subparts: Part[];
+  updatePart(newName: string): void;
+}
+```
+
+However I did a few projects in it and can now confidently say that I would never want to go back to writing regular Javascript. While this might still work for solo projects, I’d argue that as soon as there is a team involved the benefits that Typescript brings to the table are massive.
+
+Besides annotating the code and thus making it much more maintainable it reduces the amount of bugs that make it into the codebase (or production!) drastically. In the long run this becomes a huge time saver and it also increases the confidence in the code when shipping, since most runtime errors can be avoided by using Typescript.
+
+### Frontend
+
+For the client we quickly agreed we wanted to use React. It is a very widely used framework, we all had experience with it and we were confident that it is a safe long-term bet. We also really liked the React eco-system with all the cool open-source tools and libraries for it. React also promises great performance but more on that later
+
+### Datastore and backend
+
+The elephant in the room was what datastore we should choose. It was clear that we wanted to go cloud native and not run our own server infrastructure on premise. Our current Heroku setup was expensive and did not scale automatically, so we wanted to move our entire workload over to AWS.
+
+After a few days of researching different cloud databases we decided to go with Postgres on AWS RDS. The reasons for this were that we MongoDB and Firebase had not really served us well in the past: We ran into scaling issues with Firebase and RDS promised insane scaling options. And I saw a huge benefit in a clearly designed, relational data model over the sometimes chaotic data structures in NoSQL databases. Since we planned on running GraphQL as query language Postgres also came in handy as there are already a couple of tools that connect to your database and generate a GraphQL API on top of it.
+
+In our case we went with Hasura as the GraphQL layer that sits on top of our Postgres database. That way, we don’t have to write any GraphQL resolvers ourselves, but instead get it out of the box based on our data model. This was extremely useful for us because our team was small and a bit inexperienced with GraphQL at first. But the team members adapted quickly to the new technology.
+
+By choosing a Hasura and adopting its idea of a “self-serving data store” in the team, our developer velocity increased dramatically. There was automatic generation of API docs, so our frontend developers could quickly find what they need. Most features would no longer require a backend developer but could be done entirely on the frontend by creating queries and mutations and embedding them directly into the React application.
+
+Another cool feature of Hasura is that it allowed us to integrate all our legacy datasources as remote schemas. This helped us to provide a bit of interoperability between the two versions of the platform.
+
+While we initially went with the open-source version of Hasura, we later had to switch over to their cloud service. We ran [into issues](https://github.com/hasura/graphql-engine/issues/8257) running it on AWS Fargate and the open-source version does not offer any [monitoring](https://hasura.io/graphql/monitoring/), so you basically develop against a black box.
+
+I’d consider this the strongest argument against using a tool like Hasura: You basically trust a 3rd party to run your API. Hasura itself is written in Haskell so the average Node developer does not know how to modify or customize it. You might not understand what is happening under the hood. If you run into issues or bottlenecks, you depend on another company to help you out. You basically don’t own 100% of your API which can be a dangerous thing in a production environment.
+
+What I love about Hasura is that they closely interact with their user base and actively listen to feedback and feature requests.
+
+For example they recently released a feature where you’re able to query for the aggregate of an array [https://hasura.io/docs/latest/queries/postgres/query-filters/#filter-based-on-aggregations-of-nested-array-fields](https://hasura.io/docs/latest/queries/postgres/query-filters/#filter-based-on-aggregations-of-nested-array-fields)
+
+They also do monthly community calls where they share the latest updates and invite folks from the community to share things they built with Hasura.
+
+In our experience at Crowdcast they were also super responsive to our requests and ideas and even proposed the idea of a shared Slack Channel that our team can use to communicate directly with the Hasura team. Their support has been really stellar so far.
+
+Hasura cloud
+
+- why did we switch
+  - Analytics
+  - Was not available when we started out
+  - Git based deploys
+  - Response caching
+
+### graphql-codegen
+
+This is a fun one: A [tool](https://www.graphql-code-generator.com/) that automatically converts our GraphQL types into Typescript types. Whenever we run `yarn dev` we generate a Typescript schema based on our GraphQL types.
+
+There is a huge ecosystem around graphql-codegen. For example we use its `react-apollo` plugin to parse our client code and generate React hooks for all our queries, mutations and subscriptions. It is pretty neat and carries over all the GraphQL types into Typescript.
+
+## Full-stack types ftw
+
+Now we basically have what I call “fullstack types”: starting at the database where we define our Postgres data types, from there Hasura automatically generates GraphQL schemas, and through graphql-codegen those schemas are compiled into Typescript definitions. And all of this is happening fully automated, meaning your editor already knows the return types of an executed GraphQL query. I am still impressed by this setup after more than 2 years working with it!
+
+### Event-Driven architecture
+
+Hasura gives us the GraphQL layer on top of our Postgres database. This is enough for basic CRUD operations, but as soon as you want to do anything involving more custom business logic, you’ll need a custom API on the backend. Hasura solves this by using custom [actions](https://hasura.io/docs/latest/graphql/core/actions/index/). In our case, those actions are contained in a [serverless](https://www.serverless.com/) project and deployed to AWS Lambda. We also have a different repository for custom Lambdas that are unrelated to Hasura actions. I like the pattern of having a single Lambda per task, since it encapsulates the logic nicely and scales independently from the rest of the application. We have Lambdas for sending emails, push notifications, cron jobs etc.
+
+It is worth pointing out that Lambdas are stateless, that means they are not suited for long-running tasks like recording or websocket connections subscribing to chat updates.
+
+Since our entire API is now based on serverless functions, we needed a convenient way to invoke them and to communicate between them. In v1 when shit hit the fan all the requests got blocked and they’d time out eventually and get lost. So it was important for us that the communication should be asynchronous and non-blocking by default.
+
+This is where **EventBridge** came in.
+
+> Amazon EventBridge is a serverless event bus that makes it easier to build event-driven applications at scale using events generated from your applications
+
+### Initial problems
+
+We had only 3 environments at the beginning (development, staging, production). The way to keep track of changes to the schema and metadata is to run `hasura console` and all the changes you do through the browser instance are kept track of and can get checked into source control. Now if multiple developers were doing this against our development environment, their PRs would contain each others changes. Things got messy fairly quickly since we often ran into this issue, so we had to figure out an alternative. The solution was to add another _local_ environment, that entirely runs on docker compose. Now every developer had their own local postgres database running and we could check in our changes independently.

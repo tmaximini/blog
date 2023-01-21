@@ -1,9 +1,9 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
 
-import Link from "next/link";
+import Link from 'next/link';
 import Container from '../components/Container';
-
 
 export default function Home() {
   return (
@@ -11,37 +11,90 @@ export default function Home() {
       <div className="flex flex-col items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
         <div className="flex flex-col-reverse sm:flex-row items-start">
           <div className="flex flex-col pr-8">
-            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-            maxi.io
-            </h1>
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight my-6 text-black dark:text-white">
-            Thomas Maximini
+              Thomas Maximini
             </h1>
-            
-            <p className="text-gray-600 dark:text-white mb-16 text-lg font-bold">
-            Software Engineer at <a href="https://crowdcast.io">Crowdcast</a>. Based in Limburg, Germany. <br />
-            </p>
 
+            <p className="text-gray-600 dark:text-white mb-8 text-lg font-bold">
+              Software Engineer at <a href="https://crowdcast.io">Crowdcast</a>. Based in Limburg,
+              Germany. <br />
+            </p>
+            <p className="text-gray-600 dark:text-white mb-16 text-sm font-normal">
+              Welcome to my personal website 👋🏼
+              <br />
+              <br />
+              I write about software development, lifestyle and personal things. <br />
+              When I am not working you can find me traveling to new places, spending time outside
+              with my dog, making music or working out.
+              <br />
+              Hit me up on one of my social accounts or shoot me an email if you want to connect! 🤝
+              <br />
+            </p>
           </div>
           <div className="w-[80px] md:w-[200px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Thomas Maximini"
               height={400}
               width={400}
-              src="/tom_berlin.png"
+              src="/nepal.jpg"
+              objectFit="cover"
               className="rounded-full"
             />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row items-start">
-          <Link href='/blog'>
-          <a title="Blog" className="mr-4">Blog</a>
+        <iframe
+          width="100%"
+          height="450"
+          scrolling="no"
+          frameBorder="no"
+          allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1549664008&color=%239a2b2b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+        ></iframe>
+
+        <div className="flex flex-col sm:flex-row items-start mt-8">
+          <Link href="/blog">
+            <a title="Blog" className="mr-4">
+              Blog
+            </a>
           </Link>
-          <a target="_blank" title="Github" className="mr-4" href='https://github.com/tmaximini' rel="noreferrer">Github</a>
-          <a target="_blank" title="Twitter" className="mr-4" href='https://twitter.com/tmaximini' rel="noreferrer">Twitter</a>
-          <a target="_blank" title="Instagram" className="mr-4" href='https://instagram.com/mxmn82' rel="noreferrer">Instagram</a>
-          <a target="_blank" title="Soundcloud" className="mr-4" href='https://soundcloud.com/maximini' rel="noreferrer">Soundcloud</a>
-      </div>
+          <a
+            target="_blank"
+            title="Github"
+            className="mr-4"
+            href="https://github.com/tmaximini"
+            rel="noreferrer"
+          >
+            Github
+          </a>
+
+          <a
+            target="_blank"
+            title="Instagram"
+            className="mr-4"
+            href="https://instagram.com/mxmn82"
+            rel="noreferrer"
+          >
+            Instagram
+          </a>
+          <a
+            target="_blank"
+            title="Soundcloud"
+            className="mr-4"
+            href="https://soundcloud.com/maximini"
+            rel="noreferrer"
+          >
+            Soundcloud
+          </a>
+          <a
+            target="_blank"
+            title="Twitter"
+            className="mr-4"
+            href="https://twitter.com/tmaximini"
+            rel="noreferrer"
+          >
+            Twitter
+          </a>
+        </div>
       </div>
     </Container>
   );
