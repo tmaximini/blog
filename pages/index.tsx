@@ -52,10 +52,10 @@ export default function Home() {
         ></iframe>
 
         <div className="flex flex-col sm:flex-row items-start mt-8">
-          <Link href="/blog">
-            <a title="Blog" className="mr-4">
+          <Link href="/blog" title="Blog" className="mr-4">
+            
               Blog
-            </a>
+            
           </Link>
           <a
             target="_blank"
