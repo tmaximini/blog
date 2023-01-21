@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import Link from 'next/link';
 import Container from '../components/Container';
+import { Footer } from '../components/Footer';
 
 export default function Home() {
   return (
@@ -37,7 +38,6 @@ export default function Home() {
               height={400}
               width={400}
               src="/nepal.jpg"
-              objectFit="cover"
               className="rounded-full"
             />
           </div>
@@ -51,50 +51,7 @@ export default function Home() {
           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1549664008&color=%239a2b2b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
         ></iframe>
 
-        <div className="flex flex-col sm:flex-row items-start mt-8">
-          <Link href="/blog" title="Blog" className="mr-4">
-            
-              Blog
-            
-          </Link>
-          <a
-            target="_blank"
-            title="Github"
-            className="mr-4"
-            href="https://github.com/tmaximini"
-            rel="noreferrer"
-          >
-            Github
-          </a>
-
-          <a
-            target="_blank"
-            title="Instagram"
-            className="mr-4"
-            href="https://instagram.com/mxmn82"
-            rel="noreferrer"
-          >
-            Instagram
-          </a>
-          <a
-            target="_blank"
-            title="Soundcloud"
-            className="mr-4"
-            href="https://soundcloud.com/maximini"
-            rel="noreferrer"
-          >
-            Soundcloud
-          </a>
-          <a
-            target="_blank"
-            title="Twitter"
-            className="mr-4"
-            href="https://twitter.com/tmaximini"
-            rel="noreferrer"
-          >
-            Twitter
-          </a>
-        </div>
+        <Footer />
       </div>
     </Container>
   );

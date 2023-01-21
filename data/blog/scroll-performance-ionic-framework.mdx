@@ -1,10 +1,11 @@
 ---
 order: 3
-path: "/improving-scroll-performance-for-lists-ionic-framework"
-title: "Improving scroll performance for lists in Ionic Framework"
-summary: "Prevent your users from a laggy scrolling experience"
-publishedAt: "2015-01-12"
-image: ""
+path: '/improving-scroll-performance-for-lists-ionic-framework'
+title: 'Improving scroll performance for lists in Ionic Framework'
+summary: 'Prevent your users from a laggy scrolling experience'
+publishedAt: '2015-01-12'
+keywords: 'Angular.js, Hybrid app development, Ionic Framework'
+image: ''
 tags:
   - angular
 ---
@@ -82,7 +83,7 @@ Infinite scroll could for example easily be implemented like this, with `wrapper
  */
 var OFFSET = 200; // how many px from bottom should we start loading
 wrapperEl.addEventListener(
-  "scroll",
+  'scroll',
   function () {
     var listRect = listEL.getBoundingClientRect();
     var wrapRect = wrapperEl.getBoundingClientRect();
@@ -90,7 +91,7 @@ wrapperEl.addEventListener(
       scope.nextPage();
     }
   },
-  false
+  false,
 );
 ```
 
@@ -105,7 +106,7 @@ Ionic does a great job at delivering excellent CSS and great directives that ena
 The Ionic Team itself are acknowledging the downsides of Javascript-based scrolling and are working on rewriting their scrolling system based on native scrolling. You should follow [this thread](http://forum.ionicframework.com/t/native-scrolling-android-testers-wanted/17059) for more information. Also, native scrolling can now be set globally like this:
 
 ```javascript
-angular.module("ionicApp", ["ionic"]).config(function ($ionicConfigProvider) {
+angular.module('ionicApp', ['ionic']).config(function ($ionicConfigProvider) {
   if (!ionic.Platform.isIOS()) {
     $ionicConfigProvider.scrolling.jsScrolling(false);
   }

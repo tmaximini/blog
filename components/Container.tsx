@@ -38,7 +38,7 @@ export default function Container(props) {
   const router = useRouter();
   const meta = {
     title: 'Thomas Maximini',
-    description: `Freelance Web Developer and Designer based in Germany.`,
+    description: `Software Engineer and electronic music producer based in Germany.`,
     image: 'https://maxi.io/avatar.png',
     type: 'website',
     ...customMeta
@@ -50,6 +50,7 @@ export default function Container(props) {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
+        <meta content={meta.keywords} name="keywords" />
         <meta property="og:url" content={`https://maxi.io${router.asPath}`} />
         <link rel="canonical" href={`https://maxi.io${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
@@ -70,14 +71,14 @@ export default function Container(props) {
         <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
           <div className="ml-[-0.60rem] flex content-center justify-center self-center">
             <span className='mr-5'>
-            <Image
-              alt="Thomas Maximini"
-              height={50}
-              width={50}
-              src="/avatar.png"
-              className="rounded-full filter grayscale"
-              
-            />
+              <Image
+                alt="Thomas Maximini"
+                height={50}
+                width={50}
+                src="/avatar.png"
+                className="rounded-full filter grayscale"
+
+              />
             </span>
             <NavItem href="/" text="Home" />
             <NavItem href="/blog" text="Blog" />

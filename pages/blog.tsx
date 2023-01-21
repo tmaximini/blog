@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import { InferGetStaticPropsType } from 'next';
 import { pick } from '../lib/utils';
-import { allBlogs } from '.contentlayer/data';
+import { allDocuments } from 'contentlayer/generated';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
-import Link from 'next/link';
+import { Footer } from '../components/Footer';
 
 export default function Blog({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [searchValue, setSearchValue] = useState('');
@@ -24,52 +24,14 @@ export default function Blog({ posts }: InferGetStaticPropsType<typeof getStatic
             <BlogPost key={post.title} {...post} />
           ))}
         </div>
-        <div className="flex flex-col sm:flex-row items-start mt-8">
-          <a
-            target="_blank"
-            title="Github"
-            className="mr-4"
-            href="https://github.com/tmaximini"
-            rel="noreferrer"
-          >
-            Github
-          </a>
-
-          <a
-            target="_blank"
-            title="Instagram"
-            className="mr-4"
-            href="https://instagram.com/mxmn82"
-            rel="noreferrer"
-          >
-            Instagram
-          </a>
-          <a
-            target="_blank"
-            title="Soundcloud"
-            className="mr-4"
-            href="https://soundcloud.com/maximini"
-            rel="noreferrer"
-          >
-            Soundcloud
-          </a>
-          <a
-            target="_blank"
-            title="Twitter"
-            className="mr-4"
-            href="https://twitter.com/tmaximini"
-            rel="noreferrer"
-          >
-            Twitter
-          </a>
-        </div>
+        <Footer />
       </div>
     </Container>
   );
 }
 
 export function getStaticProps() {
-  const posts = allBlogs
+  const posts = allDocuments
     .map((post) => pick(post, ['slug', 'title', 'summary', 'publishedAt']))
     .sort((a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)));
 

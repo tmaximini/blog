@@ -3,7 +3,7 @@ import { parseISO, format } from 'date-fns';
 
 
 import type { PropsWithChildren } from 'react';
-import type { Blog } from '.contentlayer/types';
+import type { Blog } from '../.contentlayer/types';
 import Container from '../components/Container';
 
 
@@ -15,6 +15,7 @@ export default function BlogLayout({
     <Container
       title={`${post.title} – Thomas Maximini`}
       description={post.summary}
+      keywords={post.keywords}
       image={`https://maxi.io${post.image}`}
       date={new Date(post.publishedAt).toISOString()}
       type="article">
