@@ -3,7 +3,7 @@ import { parseISO, format } from 'date-fns';
 
 
 import type { PropsWithChildren } from 'react';
-import type { Blog } from '../.contentlayer/types';
+import type { Blog } from 'contentlayer/types';
 import Container from '../components/Container';
 
 
