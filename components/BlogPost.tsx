@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import type { Blog } from 'contentlayer/types';
+import type { Blog } from '../.contentlayer/types';
 
 export default function BlogPost({
   title,

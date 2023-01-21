@@ -21,9 +21,6 @@
     "paths": {
       "contentlayer/generated": [
         "./.contentlayer/generated"
-      ],
-      "contentlayer/types": [
-        "./.contentlayer/types"
       ]
     }
   },
