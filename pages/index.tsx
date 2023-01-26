@@ -32,7 +32,7 @@ export default function Home() {
               <br />
             </p>
           </div>
-          <div className="w-[80px] md:w-[200px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[80px] md:w-[200px] hidden md:block relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="Thomas Maximini"
               height={400}
