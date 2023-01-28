@@ -17,17 +17,21 @@ export default function Home() {
             </h1>
 
             <p className="text-gray-600 dark:text-white mb-8 text-lg font-bold">
-              Software Engineer at <a href="https://crowdcast.io">Crowdcast</a>. Based in Limburg,
-              Germany. <br />
+              Software Engineer.
             </p>
-            <p className="text-gray-600 dark:text-white mb-16 text-sm font-normal">
+            <p className="text-gray-600 dark:text-white mb-16 text-sm font-normal prose">
               Welcome to my personal website 👋🏼
               <br />
               <br />
-              I write about software development, lifestyle and personal things. <br />
-              When I am not working you can find me traveling to new places, spending time outside
-              with my dog, making music or working out.
+              Here I write about software development, lifestyle and personal things.
+              I work at at <a href="https://crowdcast.io">Crowdcast</a>.
               <br />
+              <br />
+              When I am not working you can find me traveling to new places, spending time outside
+              with my dog or making music.
+              Check out some of my DJ Mixes below or head over to my <a href="https://soundcloud.com/maximini">Soundcloud</a>.
+              <br /><br />
+
               Hit me up on one of my social accounts or shoot me an email if you want to connect! 🤝
               <br />
             </p>
@@ -41,6 +45,8 @@ export default function Home() {
               className="rounded-full"
             />
           </div>
+        </div>
+        <div>
         </div>
         <iframe
           width="100%"
