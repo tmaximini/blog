@@ -19,9 +19,9 @@ I started working at Crowdcast in March 2020, just a week before the first Covid
 
 The stack Crowdcast was ran on was a client side application written in Angular 1.x. and a monolithic API written in Node.js (express), both hosted on Heroku.
 
-During that time there were two main data stores: firebase realtime database and a MongoDB cluster. Both of those data stores are document-based and they were completely encapsulated from each other, so there was no relational integrity and they had to be kept in sync using background jobs.
+During that time there were two main data stores: Firebase realtime database and a MongoDB cluster. Both of those data stores are document-based and they were completely encapsulated from each other, so there was no relational integrity and they had to be kept in sync using background jobs.
 
-Especially the firebase realtime database proved itself as a bottleneck: Too often we found ourselves in a situation where it showed 100% load and became unresponsive, meaning that any requests relying on it could not be served anymore. And it could not be scaled up any further, their “pay-as-you-go” plan was the only option they offered.
+Especially the Firebase realtime database proved itself as a bottleneck: Too often we found ourselves in a situation where it showed 100% load and became unresponsive, meaning that any requests relying on it could not be served anymore. And it could not be scaled up any further, their “pay-as-you-go” plan was the only option they offered.
 
 We’ve already spend a serious amount of time trying to mitigate the issue by using caching but the core problem remained: Firebase would eventually reach 100% capacity and block any new requests for a couple of minutes.
 
@@ -140,7 +140,7 @@ TO summarize, `graphql-codegen` is an incredibly useful tool that can be benefic
 
 ## Summary
 
-Now we basically have what I like to refer to asl `fullstack types`:
+Now we basically have what I like to refer to as `fullstack types`:
 
 - We start at the database level where we define our Postgres data model.
   _(Note: This is done through Hasura’s console and graphical interface, so the Postgres migrations are in source control. We want to avoid any manual changes to the data model, because we need to be able to re-produce those builds on different environments)_
