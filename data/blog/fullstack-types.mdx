@@ -93,13 +93,13 @@ We realized that not using a state management library from the beginning was a m
 
 The elephant in the room was what datastore we should choose. It was clear that we wanted to go cloud native and not run our own server infrastructure on premise. Our current Heroku setup was expensive and did not scale automatically, so we wanted to move our entire workload over to AWS.
 
-After a few days of researching different cloud databases we decided to go with Postgres on AWS RDS. The reasons for this were that we MongoDB and Firebase had not really served us well in the past: We ran into scaling issues with Firebase and RDS promised insane scaling options. And I saw a huge benefit in a clearly designed, relational data model over the sometimes chaotic data structures in NoSQL databases. Since we planned on running GraphQL as query language Postgres also came in handy as there are already a couple of tools that connect to your database and generate a GraphQL API on top of it.
+After a few days of researching different cloud databases we decided to go with Postgres on AWS RDS. The reasons for this were that MongoDB and Firebase had not really served us well in the past: We ran into scaling issues with Firebase and RDS promised insane scaling options. And I saw a huge benefit in a clearly designed, relational data model over the sometimes chaotic data structures in NoSQL databases. Since we planned on running GraphQL as query language Postgres also came in handy as there are already a couple of tools that connect to your database and generate a GraphQL API on top of it.
 
-In our case we went with Hasura as the GraphQL layer that sits on top of our Postgres database. That way, we don’t have to write any GraphQL resolvers ourselves, but instead get it out of the box based on our data model. This was extremely useful for us because our team was small and a bit inexperienced with GraphQL at first. But the team members adapted quickly to the new technology.
+In our case we went with [Hasura](https://hasura.io/) as the GraphQL layer that sits on top of our Postgres database. That way, we don’t have to write any GraphQL resolvers ourselves, but instead get it out of the box based on our data model. This was extremely useful for us because our team was small and a bit inexperienced with GraphQL at first. But the team members adapted quickly to the new technology.
 
 ### Hasura GraphQL
 
-By choosing a Hasura and adopting its idea of a “self-serving data store”, our development velocity increased noticeably. We just had to think about the data model and define it in Postgres and Hasura takes care of generating the GraphQL API on top of it.
+By choosing a Hasura and adopting its idea of a “self-serving data store”, our developer velocity increased noticeably. We just had to think about the data model and define it in Postgres and Hasura takes care of generating the GraphQL API on top of it.
 
 There is automatic generation of API docs, so our frontend and iOS developers can quickly find what they need. Most features no longer require a backend developer but could be done entirely on the frontend by creating queries and mutations and embedding them directly into the application code.
 
@@ -107,15 +107,15 @@ Another cool feature of Hasura is that it allowed us to integrate all our legacy
 
 Using a 3rd party service like Hasura GraphQL comes with both pros and cons. On the one hand, the service offers a great deal of convenience, allowing users to quickly build an efficient GraphQL API. On the other hand, there are some downsides to using a 3rd party service, including the lack of control over the underlying code and relying on a 3rd party for critical production infrastructure.
 
-Hasura makes it easy to integrate with other services and technologies. We could for example use our existing Firebase authentication system in combination with Hasura’s JWT auth approach.
+Hasura makes it easy to integrate with other services and technologies. We could for example use our existing Firebase authentication system in combination with Hasura’s JWT auth approach. That way we could achieve some level of compatibility between our v1 and v2 platforms, that run on otherwise completely different tech stacks.
 
 We also liked its approach of using serverless functions for custom actions, since we are excited about serverless technologies and the scaling and stability they promise.
 
-Additionally, Hasura's community is quite active, allowing users to get quick help and support from other users.
+Additionally, Hasura's community is very active, allowing users to get quick help and support from other users.
 
 They also do monthly community calls where they share the latest updates and invite folks from the community to share things they built with Hasura.
 
-In our experience at Crowdcast they were also super responsive to our requests and ideas and even proposed the idea of a shared Slack Channel that our team can use to communicate directly with the Hasura team. Their support has been really stellar so far.
+In our experience at Crowdcast they were also super responsive to any requests and ideas and even proposed the idea of a shared Slack Channel that our team can use to communicate directly with the Hasura team. Their support has been really stellar so far.
 
 ### Hasura cloud
 
