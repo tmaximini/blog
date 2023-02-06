@@ -1,18 +1,17 @@
 ---
-path: "/blog/jwt-authorization-for-serverless-apis-on-aws-lambda"
-title: "JWT Authorization for serverless APIs on AWS Lambda"
-summary: "How to protect your serverless API routes"
-publishedAt: "2020-03-11"
-image: "/static/images/jwt-serverless/gate.png"
-keywords: "jwt, serverless, aws, auth"
+title: 'JWT Authorization for serverless APIs on AWS Lambda'
+summary: 'How to protect your serverless API routes'
+publishedAt: '2020-03-11'
+image: '/static/images/jwt-serverless/gate.png'
+keywords: 'jwt, serverless, aws, auth'
 tags:
   - serverless
   - Lambda
 ---
 
-![gate](/static/images/jwt-serverless/gate.png "@jeremy unsplash.com")
+![gate](/static/images/jwt-serverless/gate.png '@jeremy unsplash.com')
 
-<span style={{ fontSize: "11px" }}>Photo by Jeremy Goldberg on Unsplash</span>
+<span style={{ fontSize: '11px' }}>Photo by Jeremy Goldberg on Unsplash</span>
 
 Serverless functions allow us to write small contained API endpoints for our apps. In this post we are going to learn how to secure our serverless API endpoint with a json web token ([JWT](https://jwt.io/)) based authorization.
 
@@ -134,22 +133,22 @@ When designing a service or an api I like to start with the data model. This is 
 In our case, the schema is fairly simple for now, but we keep it generic enough to be able to extend it later on. I am using the [dynamodb-toolbox](https://github.com/jeremydaly/dynamodb-toolbox) package here to define my data model and simplify writing queries.
 
 ```js
-const { Model } = require("dynamodb-toolbox");
-const User = new Model("User", {
+const { Model } = require('dynamodb-toolbox');
+const User = new Model('User', {
   // Specify table name
-  table: "test-users-table",
+  table: 'test-users-table',
 
   // Define partition and sort keys
-  partitionKey: "pk",
-  sortKey: "sk",
+  partitionKey: 'pk',
+  sortKey: 'sk',
 
   // Define schema
   schema: {
-    pk: { type: "string", alias: "email" },
-    sk: { type: "string", hidden: true, alias: "type" },
-    id: { type: "string" },
-    passwordHash: { type: "string" },
-    createdAt: { type: "string" },
+    pk: { type: 'string', alias: 'email' },
+    sk: { type: 'string', hidden: true, alias: 'type' },
+    id: { type: 'string' },
+    passwordHash: { type: 'string' },
+    createdAt: { type: 'string' },
   },
 });
 ```
@@ -173,7 +172,7 @@ org: your-org
 
 custom:
   secrets: ${file(secrets.json)}
-  tableName: "test-users-table"
+  tableName: 'test-users-table'
 
 service: serverless-jwt-authorizer
 provider:
@@ -184,11 +183,11 @@ provider:
     JWT_SECRET: ${self:custom.secrets.JWT_SECRET}
     AWS_ID: ${self:custom.secrets.AWS_ID}
   iamRoleStatements:
-    - Effect: "Allow"
+    - Effect: 'Allow'
       Action:
-        - "dynamodb:GetItem"
-        - "dynamodb:PutItem"
-      Resource: "arn:aws:dynamodb:eu-central-1:${self:custom.secrets.AWS_ID}:table/${self:custom.tableName}"
+        - 'dynamodb:GetItem'
+        - 'dynamodb:PutItem'
+      Resource: 'arn:aws:dynamodb:eu-central-1:${self:custom.secrets.AWS_ID}:table/${self:custom.tableName}'
 functions:
   verify-token:
     handler: functions/authorize.handler
@@ -246,32 +245,32 @@ In order to let a user register for our service, we need to store their data in 
 ```js
 // lib/db.js
 
-const AWS = require("aws-sdk");
-const bcrypt = require("bcryptjs");
-const { Model } = require("dynamodb-toolbox");
-const { v4: uuidv4 } = require("uuid");
+const AWS = require('aws-sdk');
+const bcrypt = require('bcryptjs');
+const { Model } = require('dynamodb-toolbox');
+const { v4: uuidv4 } = require('uuid');
 
-const User = new Model("User", {
+const User = new Model('User', {
   // Specify table name
-  table: "test-users-table",
+  table: 'test-users-table',
 
   // Define partition and sort keys
-  partitionKey: "pk",
-  sortKey: "sk",
+  partitionKey: 'pk',
+  sortKey: 'sk',
 
   // Define schema
   schema: {
-    pk: { type: "string", alias: "email" },
-    sk: { type: "string", hidden: true, alias: "type" },
-    id: { type: "string" },
-    passwordHash: { type: "string" },
-    createdAt: { type: "string" },
+    pk: { type: 'string', alias: 'email' },
+    sk: { type: 'string', hidden: true, alias: 'type' },
+    id: { type: 'string' },
+    passwordHash: { type: 'string' },
+    createdAt: { type: 'string' },
   },
 });
 
 // INIT AWS
 AWS.config.update({
-  region: "eu-central-1",
+  region: 'eu-central-1',
 });
 // init DynamoDB document client
 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -283,7 +282,7 @@ const createDbUser = async (props) => {
   const params = User.put({
     ...props,
     id: uuidv4(),
-    type: "User",
+    type: 'User',
     passwordHash,
     createdAt: new Date(),
   });
@@ -310,7 +309,7 @@ Let's create a file called `functions/register.js` that looks like this:
 ```js
 // functions/register.js
 
-const { createDbUser } = require("../lib/db");
+const { createDbUser } = require('../lib/db');
 
 module.exports.handler = async function registerUser(event) {
   const body = JSON.parse(event.body);
@@ -325,7 +324,7 @@ module.exports.handler = async function registerUser(event) {
 
       return {
         statusCode: err.statusCode || 500,
-        headers: { "Content-Type": "text/plain" },
+        headers: { 'Content-Type': 'text/plain' },
         body: { stack: err.stack, message: err.message },
       };
     });
@@ -344,7 +343,7 @@ First, we need to extend our lib/db.js helpers file with a function that retriev
 //...
 
 const getUserByEmail = async (email) => {
-  const params = User.get({ email, sk: "User" });
+  const params = User.get({ email, sk: 'User' });
   const response = await docClient.get(params).promise();
 
   return User.parse(response);
@@ -370,7 +369,7 @@ Here is the implementation of the `login` handler:
 
 ```js
 // ./functions/login.js
-const { login } = require("../lib/utils");
+const { login } = require('../lib/utils');
 
 module.exports.handler = async function signInUser(event) {
   const body = JSON.parse(event.body);
@@ -385,7 +384,7 @@ module.exports.handler = async function signInUser(event) {
 
       return {
         statusCode: err.statusCode || 500,
-        headers: { "Content-Type": "text/plain" },
+        headers: { 'Content-Type': 'text/plain' },
         body: { stack: err.stack, message: err.message },
       };
     });
@@ -396,21 +395,18 @@ async function login(args) {
   try {
     const user = await getUserByEmail(args.email);
 
-    const isValidPassword = await comparePassword(
-      args.password,
-      user.passwordHash
-    );
+    const isValidPassword = await comparePassword(args.password, user.passwordHash);
 
     if (isValidPassword) {
       const token = await signToken(user);
       return Promise.resolve({
         auth: true,
         token: token,
-        status: "SUCCESS",
+        status: 'SUCCESS',
       });
     }
   } catch (err) {
-    console.info("Error login", err);
+    console.info('Error login', err);
     return Promise.reject(new Error(err));
   }
 }
@@ -436,8 +432,8 @@ Sounds simple right? Let's take a look:
 
 ```js
 // ./functions/me.js
-const { getUserByEmail } = require("../lib/db");
-const { getUserFromToken } = require("../lib/utils");
+const { getUserByEmail } = require('../lib/db');
+const { getUserFromToken } = require('../lib/utils');
 
 module.exports.handler = async function (event) {
   const userObj = await getUserFromToken(event.headers.Authorization);
@@ -453,9 +449,9 @@ module.exports.handler = async function (event) {
 
 // ./lib/utils.js
 async function getUserFromToken(token) {
-  const secret = Buffer.from(process.env.JWT_SECRET, "base64");
+  const secret = Buffer.from(process.env.JWT_SECRET, 'base64');
 
-  const decoded = jwt.verify(token.replace("Bearer ", ""), secret);
+  const decoded = jwt.verify(token.replace('Bearer ', ''), secret);
 
   return decoded;
 }
@@ -472,7 +468,7 @@ The policyDocument has to contain the following information:
 ### The authorizer function
 
 ```js
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 function generateAuthResponse(principalId, effect, methodArn) {
   const policyDocument = generatePolicyDocument(effect, methodArn);
@@ -487,10 +483,10 @@ function generatePolicyDocument(effect, methodArn) {
   if (!effect || !methodArn) return null;
 
   const policyDocument = {
-    Version: "2012-10-17",
+    Version: '2012-10-17',
     Statement: [
       {
-        Action: "execute-api:Invoke",
+        Action: 'execute-api:Invoke',
         Effect: effect,
         Resource: methodArn,
       },
@@ -501,20 +497,20 @@ function generatePolicyDocument(effect, methodArn) {
 }
 
 module.exports.verifyToken = (event, context, callback) => {
-  const token = event.authorizationToken.replace("Bearer ", "");
+  const token = event.authorizationToken.replace('Bearer ', '');
   const methodArn = event.methodArn;
 
-  if (!token || !methodArn) return callback(null, "Unauthorized");
+  if (!token || !methodArn) return callback(null, 'Unauthorized');
 
-  const secret = Buffer.from(process.env.JWT_SECRET, "base64");
+  const secret = Buffer.from(process.env.JWT_SECRET, 'base64');
 
   // verifies token
   const decoded = jwt.verify(token, secret);
 
   if (decoded && decoded.id) {
-    return callback(null, generateAuthResponse(decoded.id, "Allow", methodArn));
+    return callback(null, generateAuthResponse(decoded.id, 'Allow', methodArn));
   } else {
-    return callback(null, generateAuthResponse(decoded.id, "Deny", methodArn));
+    return callback(null, generateAuthResponse(decoded.id, 'Deny', methodArn));
   }
 };
 ```

@@ -1,8 +1,4 @@
-import {
-  ComputedFields,
-  defineDocumentType,
-  makeSource
-} from 'contentlayer/source-files';
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files';
 
 import readingTime from 'reading-time';
 import remarkGfm from 'remark-gfm';
@@ -15,13 +11,13 @@ const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
     type: 'number',
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length
+    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
   },
 
   slug: {
     type: 'string',
-    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, '')
-  }
+    resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
+  },
 };
 
 const Blog = defineDocumentType(() => ({
@@ -33,12 +29,11 @@ const Blog = defineDocumentType(() => ({
     publishedAt: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     image: { type: 'string', required: true },
-    keywords: { type: 'string', required: false}
+    keywords: { type: 'string', required: true },
+    tags: { type: 'list', of: { type: 'string' }, required: true },
   },
-  computedFields
+  computedFields,
 }));
-
-
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
@@ -53,12 +48,12 @@ const contentLayerConfig = makeSource({
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ['anchor']
-          }
-        }
-      ]
-    ]
-  }
+            className: ['anchor'],
+          },
+        },
+      ],
+    ],
+  },
 });
 
 export default contentLayerConfig;

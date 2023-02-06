@@ -1,11 +1,11 @@
 ---
-path: "/building-fullscreen-overlays-with-react-16-portals"
-title: "Building a fullscreen overlay with React 16s portal"
-summary: "React 16 is here and it has portals"
-publishedAt: "2018-02-12"
-image: ""
+title: 'Building a fullscreen overlay with React 16s portal'
+summary: 'React 16 is here and it has portals'
+publishedAt: '2018-02-12'
+image: ''
 tags:
   - React
+keywords: 'React, Portal, Overlay'
 ---
 
 Recently I found myself once again in the situation that I had to build a fullscreen overlay for a website, in this case for displaying a video.
@@ -21,14 +21,14 @@ A portal is just a DOM-fragment that is not mounted as a direct child or sibling
 First, let's build a very generic and re-usable `Modal` component that implements the Portal logic.
 
 ```javascript
-import React from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 // I use the same div here that I mount my app into
 // so the modal will be a sibling of the rest of the app
 // in the DOM hierachy
-const modalRoot = document.getElementById("root");
+const modalRoot = document.getElementById('root');
 
 export default class Modal extends React.PureComponent {
   static propTypes = {
@@ -37,7 +37,7 @@ export default class Modal extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.el = document.createElement("div");
+    this.el = document.createElement('div');
   }
 
   componentDidMount() {
@@ -59,12 +59,12 @@ This component does nothing else than creating a div and mouting it as a child o
 Now we build the actual `VideoModal` component that makes use of this generic Modal and adds a little functionality:
 
 ```javascript
-import React from "react";
-import PropTypes from "prop-types";
-import CssModules from "react-css-modules";
-import { RemoveIcon } from "@components/Shared/Icons/Icons";
-import Modal from "./Modal";
-import classes from "./VideoModal.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import CssModules from 'react-css-modules';
+import { RemoveIcon } from '@components/Shared/Icons/Icons';
+import Modal from './Modal';
+import classes from './VideoModal.scss';
 
 @CssModules(classes)
 export default class VideoModal extends React.PureComponent {
@@ -147,10 +147,10 @@ Imagine a video list component where we map over an array of items like this:
 Now, the `StoryAvatar` might look something like this:
 
 ```javascript
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import VideoModal from "../Modal/VideoModal";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import VideoModal from '../Modal/VideoModal';
 
 export default class StoryAvatar extends PureComponent {
   static propTypes = {
@@ -185,7 +185,7 @@ export default class StoryAvatar extends PureComponent {
     const { story } = this.props;
     const { seen } = this.state;
     return (
-      <div styleName={classnames("story", { seen })}>
+      <div styleName={classnames('story', { seen })}>
         <span styleName="button" onClick={this.handleClick}>
           <span styleName="img">
             <span

@@ -1,17 +1,16 @@
 ---
-path: "/typescript-bang-operator-considered-harmful"
-title: "Typescript: Bang operator considered harmful"
-summary: "Oh no, a runtime error"
-image: "/static/images/ts-bang/error.png"
-publishedAt: "2020-12-03"
-keywords: "Typescript, bang, operator, no-null-assertion, runtime error, eslint"
+title: 'Typescript: Bang operator considered harmful'
+summary: 'Oh no, a runtime error'
+image: '/static/images/ts-bang/error.png'
+publishedAt: '2020-12-03'
+keywords: 'Typescript, bang, operator, no-null-assertion, runtime error, eslint'
 tags:
   - typescript
 ---
 
 We recently ran into a few runtime errors in our frontend. People would get errors like `Cannot read property x of null` or `Cannot read property .length of undefined` and so on. Something propably every Javascript developer has encountered before.
 
-![error](/static/images/ts-bang/error.png "Next.js throwing an error")
+![error](/static/images/ts-bang/error.png 'Next.js throwing an error')
 
 no bueno!
 
@@ -35,7 +34,7 @@ Sounds difficult. But all it does is basically telling the compiler "this value 
 
 One of the great advantages of Typescript is that it checks your code instantly for any type errors (duh), so whenever you are working with an object or variable value that _might_ be undefined, it gives you a warning.
 
-![eslint](/static/images/ts-bang/eslint.png "Eslint showing a warning")
+![eslint](/static/images/ts-bang/eslint.png 'Eslint showing a warning')
 
 It usually does so by underlining the variable and showing you a little warning. The lazy developer might just go ahead, yell at Typescript that they know what they're doing and add a ! to it. Problem solved right?
 

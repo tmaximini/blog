@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { InferGetStaticPropsType } from 'next';
-import { pick } from '../lib/utils';
 import { allDocuments } from 'contentlayer/generated';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
 import { Footer } from '../components/Footer';
+import { Blog as BlogType } from 'types';
+import { compareDesc } from 'date-fns';
 
-export default function Blog({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Blog({ posts }: { posts: BlogType[] }) {
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase()),
@@ -30,10 +30,9 @@ export default function Blog({ posts }: InferGetStaticPropsType<typeof getStatic
   );
 }
 
-export function getStaticProps() {
-  const posts = allDocuments
-    .map((post) => pick(post, ['slug', 'title', 'summary', 'publishedAt']))
-    .sort((a, b) => Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)));
-
+export async function getStaticProps() {
+  const posts: BlogType[] = allDocuments.sort((a, b) => {
+    return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
+  });
   return { props: { posts } };
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://maxi.io/blog</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/apollo-headers</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/cypress-aws-linux</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/fullstack-types</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/getting-started-with-crosswalk</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/image-upload-s3-apollo</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/jwt-serverless-auth</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/next-10-auth</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/react-16-portal-overlays</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/scroll-performance-ionic-framework</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/serverless-graphql</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/traits-of-good-devs</loc>
+  </url>
+
+  <url>
+    <loc>https://maxi.io/blog/typescript-bang</loc>
+  </url>
+</urlset>
