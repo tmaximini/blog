@@ -4,15 +4,15 @@ import { allBlogs } from '../.contentlayer/generated/index.mjs';
 
 const feed = new RSS({
   title: 'Thomas Maximini - Articles',
-  feed_url: 'https://maxi.io/rss.xml',
-  site_url: 'https://maxi.io',
+  feed_url: 'https://thomasmaximini.com/rss.xml',
+  site_url: 'https://thomasmaximini.com',
 });
 
 allBlogs
   .map((blog) => ({
     title: blog.title,
     description: blog.summary,
-    url: `https://maxi.io/blog/${blog.slug}`,
+    url: `https://thomasmaximini.com/blog/${blog.slug}`,
     date: blog.publishedAt,
   }))
   .forEach((item) => {

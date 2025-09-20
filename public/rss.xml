@@ -2,78 +2,78 @@
     <channel>
         <title><![CDATA[Thomas Maximini - Articles]]></title>
         <description><![CDATA[Thomas Maximini - Articles]]></description>
-        <link>https://maxi.io</link>
+        <link>https://thomasmaximini.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 06 Feb 2023 05:29:11 GMT</lastBuildDate>
-        <atom:link href="https://maxi.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 20 Sep 2025 22:57:04 GMT</lastBuildDate>
+        <atom:link href="https://thomasmaximini.com/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Accessing Authorization headers in Apollo GraphQL client]]></title>
             <description><![CDATA[Afterware is the new middleware]]></description>
-            <link>https://maxi.io/blog/apollo-headers</link>
-            <guid isPermaLink="true">https://maxi.io/blog/apollo-headers</guid>
+            <link>https://thomasmaximini.com/blog/apollo-headers</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/apollo-headers</guid>
             <pubDate>Fri, 24 Jan 2020 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Running Cypress on an Amazon Linux AMI with Docker and Jenkins]]></title>
             <description><![CDATA[Get cypress working together with AWS Linux on your CI]]></description>
-            <link>https://maxi.io/blog/cypress-aws-linux</link>
-            <guid isPermaLink="true">https://maxi.io/blog/cypress-aws-linux</guid>
+            <link>https://thomasmaximini.com/blog/cypress-aws-linux</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/cypress-aws-linux</guid>
             <pubDate>Tue, 20 Aug 2019 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Fullstack types with Postgres, Hasura GraphQL and Typescript]]></title>
             <description><![CDATA[How using types helped us to accelerate developer productivity]]></description>
-            <link>https://maxi.io/blog/fullstack-types</link>
-            <guid isPermaLink="true">https://maxi.io/blog/fullstack-types</guid>
+            <link>https://thomasmaximini.com/blog/fullstack-types</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/fullstack-types</guid>
             <pubDate>Sun, 22 Jan 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Getting started with crosswalk for Ionic Framework]]></title>
             <description><![CDATA[How to use the drop in replacement for the Android webview]]></description>
-            <link>https://maxi.io/blog/getting-started-with-crosswalk</link>
-            <guid isPermaLink="true">https://maxi.io/blog/getting-started-with-crosswalk</guid>
+            <link>https://thomasmaximini.com/blog/getting-started-with-crosswalk</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/getting-started-with-crosswalk</guid>
             <pubDate>Fri, 23 Jan 2015 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Upload images to AWS S3 with React and Apollo GraphQL]]></title>
             <description><![CDATA[Simple file uploads with react-dropzone]]></description>
-            <link>https://maxi.io/blog/image-upload-s3-apollo</link>
-            <guid isPermaLink="true">https://maxi.io/blog/image-upload-s3-apollo</guid>
+            <link>https://thomasmaximini.com/blog/image-upload-s3-apollo</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/image-upload-s3-apollo</guid>
             <pubDate>Fri, 10 Jan 2020 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[JWT Authorization for serverless APIs on AWS Lambda]]></title>
             <description><![CDATA[How to protect your serverless API routes]]></description>
-            <link>https://maxi.io/blog/jwt-serverless-auth</link>
-            <guid isPermaLink="true">https://maxi.io/blog/jwt-serverless-auth</guid>
+            <link>https://thomasmaximini.com/blog/jwt-serverless-auth</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/jwt-serverless-auth</guid>
             <pubDate>Wed, 11 Mar 2020 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Authentication in Next.js apps]]></title>
             <description><![CDATA[Concepts for isomorphic authentication]]></description>
-            <link>https://maxi.io/blog/next-10-auth</link>
-            <guid isPermaLink="true">https://maxi.io/blog/next-10-auth</guid>
+            <link>https://thomasmaximini.com/blog/next-10-auth</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/next-10-auth</guid>
             <pubDate>Sat, 21 Nov 2020 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Building a fullscreen overlay with React 16s portal]]></title>
             <description><![CDATA[React 16 is here and it has portals]]></description>
-            <link>https://maxi.io/blog/react-16-portal-overlays</link>
-            <guid isPermaLink="true">https://maxi.io/blog/react-16-portal-overlays</guid>
+            <link>https://thomasmaximini.com/blog/react-16-portal-overlays</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/react-16-portal-overlays</guid>
             <pubDate>Mon, 12 Feb 2018 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Traits of good developers]]></title>
             <description><![CDATA[My personal observation]]></description>
-            <link>https://maxi.io/blog/traits-of-good-devs</link>
-            <guid isPermaLink="true">https://maxi.io/blog/traits-of-good-devs</guid>
+            <link>https://thomasmaximini.com/blog/traits-of-good-devs</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/traits-of-good-devs</guid>
             <pubDate>Sat, 02 Nov 2019 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Typescript: Bang operator considered harmful]]></title>
             <description><![CDATA[Oh no, a runtime error]]></description>
-            <link>https://maxi.io/blog/typescript-bang</link>
-            <guid isPermaLink="true">https://maxi.io/blog/typescript-bang</guid>
+            <link>https://thomasmaximini.com/blog/typescript-bang</link>
+            <guid isPermaLink="true">https://thomasmaximini.com/blog/typescript-bang</guid>
             <pubDate>Thu, 03 Dec 2020 00:00:00 GMT</pubDate>
         </item>
     </channel>

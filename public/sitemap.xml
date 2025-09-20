@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://maxi.io/blog</loc>
+    <loc>https://thomasmaximini.com/blog</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io</loc>
+    <loc>https://thomasmaximini.com</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/apollo-headers</loc>
+    <loc>https://thomasmaximini.com/blog/apollo-headers</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/cypress-aws-linux</loc>
+    <loc>https://thomasmaximini.com/blog/cypress-aws-linux</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/fullstack-types</loc>
+    <loc>https://thomasmaximini.com/blog/fullstack-types</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/getting-started-with-crosswalk</loc>
+    <loc>https://thomasmaximini.com/blog/getting-started-with-crosswalk</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/image-upload-s3-apollo</loc>
+    <loc>https://thomasmaximini.com/blog/image-upload-s3-apollo</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/jwt-serverless-auth</loc>
+    <loc>https://thomasmaximini.com/blog/jwt-serverless-auth</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/next-10-auth</loc>
+    <loc>https://thomasmaximini.com/blog/next-10-auth</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/react-16-portal-overlays</loc>
+    <loc>https://thomasmaximini.com/blog/react-16-portal-overlays</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/scroll-performance-ionic-framework</loc>
+    <loc>https://thomasmaximini.com/blog/scroll-performance-ionic-framework</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/serverless-graphql</loc>
+    <loc>https://thomasmaximini.com/blog/serverless-graphql</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/traits-of-good-devs</loc>
+    <loc>https://thomasmaximini.com/blog/traits-of-good-devs</loc>
   </url>
 
   <url>
-    <loc>https://maxi.io/blog/typescript-bang</loc>
+    <loc>https://thomasmaximini.com/blog/typescript-bang</loc>
   </url>
 </urlset>

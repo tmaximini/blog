@@ -12,7 +12,7 @@ const urlTags = pages
   .map(
     (path) => `
       <url>
-          <loc>https://maxi.io${path}</loc>
+          <loc>https://thomasmaximini.com${path}</loc>
       </url>
     `,
   )

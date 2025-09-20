@@ -9,17 +9,17 @@ import { Footer } from '../components/Footer';
 export default function Home() {
   return (
     <Container>
-      <div className="flex flex-col items-start max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
-        <div className="flex flex-col-reverse sm:flex-row items-start">
+      <div className="flex flex-col items-start pb-16 mx-auto max-w-3xl border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col-reverse items-start sm:flex-row">
           <div className="flex flex-col pr-8">
-            <h1 className="font-bold text-3xl md:text-5xl tracking-tight my-6 text-black dark:text-white">
+            <h1 className="my-6 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
               Thomas Maximini
             </h1>
 
-            <p className="text-gray-600 dark:text-white mb-8 text-lg font-bold">
+            <p className="mb-8 text-lg font-bold text-gray-600 dark:text-white">
               Software Engineer.
             </p>
-            <p className="text-gray-600 dark:text-white mb-16 text-sm font-normal prose">
+            <p className="mb-16 text-sm font-normal text-gray-600 dark:text-white prose">
               Welcome to my personal website 👋🏼
               <br />
               <br />
@@ -27,12 +27,16 @@ export default function Home() {
               I work at at <a href="https://crowdcast.io">Crowdcast</a>.
               <br />
               <br />
+              As a self-improvement enthusiast, I am interested in using technology as a means to improve our daily lives.
+              That's why I'm currently working on a new project called <a href="https://maxi.io">Maxi.io</a>, an AI companion and habit tracker. Check it out!
+              <br />
+              <br />
               When I am not working you can find me traveling to new places, spending time outside
               with my dog or making music.
               Check out some of my DJ Mixes below or head over to my <a href="https://soundcloud.com/maximini">Soundcloud</a>.
               <br /><br />
 
-              Hit me up on one of my social accounts or shoot me an email if you want to connect! 🤝
+              Hit me up on <a href="https://x.com/tmaximini">Twitter / X</a> or shoot me an email if you want to connect! 🤝
               <br />
             </p>
           </div>

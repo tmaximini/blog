@@ -39,7 +39,7 @@ export default function Container(props) {
   const meta = {
     title: 'Thomas Maximini',
     description: `Software Engineer and electronic music producer based in Germany.`,
-    image: 'https://maxi.io/avatar.png',
+    image: 'https://thomasmaximini.com/avatar.png',
     type: 'website',
     ...customMeta
   };
@@ -57,8 +57,8 @@ export default function Container(props) {
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
         <meta content={meta.keywords} name="keywords" />
-        <meta property="og:url" content={`https://maxi.io${router.asPath}`} />
-        <link rel="canonical" href={`https://maxi.io${router.asPath}`} />
+        <meta property="og:url" content={`https://thomasmaximini.com${router.asPath}`} />
+        <link rel="canonical" href={`https://thomasmaximini.com${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Thomas Maximini" />
         <meta property="og:description" content={meta.description} />

@@ -11,7 +11,7 @@ export default function BlogLayout({ children, post }: PropsWithChildren<{ post:
       title={`${post.title} – Thomas Maximini`}
       description={post.summary}
       keywords={post.keywords}
-      image={post.image ? `https://maxi.io${post.image}` : 'https://maxi.io/avatar.png'}
+      image={post.image ? `https://thomasmaximini.com${post.image}` : 'https://thomasmaximini.com/avatar.png'}
       date={new Date(post.publishedAt).toISOString()}
       type="article"
     >
