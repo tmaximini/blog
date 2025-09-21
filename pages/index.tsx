@@ -20,7 +20,7 @@ export default function Home() {
               Software Engineer.
             </p>
             <p className="mb-16 text-sm font-normal text-gray-600 dark:text-white prose">
-              Welcome to my personal website 👋🏼
+              Thanks for stopping by! ✌️
               <br />
               <br />
               Here I write about software development, lifestyle and personal things.
