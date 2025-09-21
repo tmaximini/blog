@@ -4,7 +4,7 @@
         <description><![CDATA[Thomas Maximini - Articles]]></description>
         <link>https://thomasmaximini.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 21 Sep 2025 00:09:48 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Sep 2025 00:30:11 GMT</lastBuildDate>
         <atom:link href="https://thomasmaximini.com/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Accessing Authorization headers in Apollo GraphQL client]]></title>
