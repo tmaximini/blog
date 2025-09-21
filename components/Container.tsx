@@ -18,7 +18,7 @@ function NavItem({ href, text }) {
         isActive
           ? 'font-semibold text-gray-800 dark:text-gray-200'
           : 'font-normal text-gray-600 dark:text-gray-400',
-        'text-lg inline-block p-1 sm:px-3 sm:py-3 rounded-lg transition-all'
+        'text-lg inline-block px-4 py-2 sm:px-4 sm:py-3 rounded-lg transition-all'
       )}>
 
       <span className="capsize">{text}</span>
@@ -75,8 +75,8 @@ export default function Container(props) {
       </Head>
       <div className="flex flex-col justify-center px-8">
         <nav className="flex items-center justify-between w-full relative max-w-3xl border-gray-200 dark:border-gray-700 mx-auto pt-8 pb-8 sm:pb-16  text-gray-900 bg-gray-50  dark:bg-gray-900 bg-opacity-60 dark:text-gray-100">
-          <div className="ml-[-0.60rem] flex content-center justify-center self-center">
-            <span className='mr-5'>
+          <div className="flex items-center space-x-2">
+            <span className='mr-4'>
               <Image
                 alt="Thomas Maximini"
                 height={50}
