@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "contentlayer build && node scripts/fix-imports.mjs && next build",
     "start": "next start",
     "lint": "next lint",
     "sitemap": "node scripts/sitemap.mjs",
